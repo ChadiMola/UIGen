@@ -1,25 +1,33 @@
-import logo from './logo.svg';
+import Home  from './components/Home';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import NavBar from './components/NavBar';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import Dalle2 from './components/GeImg';
 
 function App() {
+  
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+  },
+});
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <ThemeProvider theme={darkTheme}>
+      <CssBaseline />
+    <NavBar/>
+   <Routes>
+    <Route path='/' element={<Dalle2/>} />
+   </Routes>
+   </ThemeProvider>
+   </>
   );
 }
 
 export default App;
+
+
+
